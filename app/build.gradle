@@ -1,0 +1,39 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion '27.0.3'
+    defaultConfig {
+        applicationId "com.abbyy.rtr.sample.textcapture"
+        minSdkVersion 19
+        targetSdkVersion 22
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    sourceSets {
+        main {
+            // In your application you might want to copy all files in the standard assets folder
+            assets.srcDirs += ['../../assets', '../../License']
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation(name:'abbyy-rtr-sdk-1.0', ext:'aar')
+    implementation 'com.android.support:appcompat-v7:23.1.1'
+    implementation 'com.android.support:support-v4:23.1.1'
+}
+
+allprojects {
+    repositories {
+        // The order in which you list these repositories matter.
+        google()
+    }
+}

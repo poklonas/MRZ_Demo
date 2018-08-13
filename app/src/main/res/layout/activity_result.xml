@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/passportNo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="passportNo"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="22sp" />
+
+    <TextView
+        android:id="@+id/typeView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="typeView"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="22sp" />
+
+    <TextView
+        android:id="@+id/nameView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="nameView"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="22sp" />
+
+    <TextView
+        android:id="@+id/countryView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="countryView"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="22sp" />
+
+    <TextView
+        android:id="@+id/NationalityView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="NationalityView"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+    <TextView
+        android:id="@+id/birthDateView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="birthDateView"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="22sp" />
+
+    <TextView
+        android:id="@+id/sexView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="sexView"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="22sp" />
+
+    <TextView
+        android:id="@+id/expiryView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="expiryView"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="22sp" />
+
+    <Button
+        android:id="@+id/button_back"
+        android:layout_width="wrap_content"
+        android:layout_height="34dp"
+        android:text="Back"
+        android:textAlignment="center"
+        android:textSize="12sp" />
+
+</LinearLayout>
