@@ -19,6 +19,10 @@ public class ResultActivity extends Activity {
     private TextView NationalityView;
     private TextView passportTypeView;
 
+    private TextView line1;
+    private TextView line2;
+    private TextView line3;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +37,10 @@ public class ResultActivity extends Activity {
         passportNoView = (TextView) findViewById( R.id.passportNo );
         NationalityView = (TextView) findViewById( R.id.NationalityView );
         passportTypeView = (TextView) findViewById( R.id.typeView );
+        line1 = (TextView) findViewById( R.id.textLine1 );
+        line2 = (TextView) findViewById( R.id.textLine2 );
+        line3 = (TextView) findViewById( R.id.textLine3 );
+
 
         Button buttonBack = (Button) findViewById(R.id.button_back);
 
@@ -46,6 +54,7 @@ public class ResultActivity extends Activity {
 
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
+
             String name = bundle.getString("name");
             String surname = bundle.getString("surname");
             String country = bundle.getString("country");
@@ -55,6 +64,10 @@ public class ResultActivity extends Activity {
             String passportNo = bundle.getString("passportNo");
             String nationality = bundle.getString("nationality");
             String type = bundle.getString("type");
+
+            String line1S = bundle.getString("line1");
+            String line2S = bundle.getString("line2");
+            String line3S = bundle.getString("line3");
 
             String errorCode = bundle.getString("error");
             if(errorCode.charAt(0) == '0' ){
@@ -76,9 +89,8 @@ public class ResultActivity extends Activity {
             }
 
             if(errorCode.charAt(3) != '0' ){
-                expiryDateView.setBackgroundColor(Color.parseColor("#FF0000"));
-                birthDateView.setBackgroundColor(Color.parseColor("#FF0000"));
-                passportNoView.setBackgroundColor(Color.parseColor("#FF0000"));
+                line3.setBackgroundColor(Color.parseColor("#FF0000"));
+                line3.setText("Check Digit Error On last : " + errorCode);
             }
 
 
@@ -92,7 +104,8 @@ public class ResultActivity extends Activity {
             sexTextView.setText("Sex : " + sex);
             expiryDateView.setText("Expiry of Date : " + expiry.substring(4, 6) + " / " +
                     expiry.substring(2, 4) + " / 20" + expiry.substring(0, 2));
-
-        }
+            line1.setText(line1S);
+            line2.setText(line2S);
+            line3.setText(line3S);        }
     }
 }

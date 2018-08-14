@@ -192,11 +192,18 @@ public class MainActivity extends Activity {
 				String lines3 = data3.replace("«","<<");
 				int sizeLine3 = lines3.length();
 				if(sizeLine3 == 30 && sizeLine3 == sizeLine2 && sizeLine3 == sizeLine1){
-					MRZ_Type2_Show(lines3, lines1, lines2);
+					MRZ_Type1_Show(lines3, lines1, lines2);
 				}
 			}
-			if(sizeLine1 == sizeLine2 && sizeLine1 == 44 ) {
-				MRZ_Type1and3_Show(lines1, lines2);
+			if(sizeLine1 == sizeLine2) {
+			//String dumy1 = "P<SWEHAAKANSSON<<NILS<ERIK<MATTIAS<<<<<<<<<<";
+			//String dummy2 = "90478012<3SWE4908300M2009292194908306212<<56";
+			//MRZ_Type1and3_Show(dumy1, dummy2);
+				if(sizeLine1 == 44) {
+					MRZ_Type3_Show(lines1, lines2);
+				}else if(sizeLine1 == 36){
+					MRZ_Type2_Show(lines1, lines2);
+				}
 			}
 		}
 	}
@@ -269,6 +276,75 @@ public class MainActivity extends Activity {
 		}
 		return sum;
 	}
+
+	private int sumCheckDigitForAll(String line){
+		int sum = 0;
+		int state = 7;
+		int[] tranfer = tranferValueForall(line);
+		for (int i = 0 ; i < line.length() ; i++){
+			sum += (state * tranfer[i]);
+			switch (state) {
+				case 7:
+					state = 3;
+					break;
+				case 3:
+					state = 1;
+					break;
+				case 1:
+					state = 7;
+					break;
+				default:
+					break;
+			}
+		}
+		return sum;
+	}
+
+//	private int sumCheckDigitForAlltd2(String line){
+//		int sum = 0;
+//		int state = 7;
+//		int[] tranfer = tranferValueForall(line);
+//		for (int i = 0 ; i < line.length() ; i++){
+//			sum += (state * tranfer[i]);
+//			switch (state) {
+//				case 7:
+//					state = 3;
+//					break;
+//				case 3:
+//					state = 1;
+//					break;
+//				case 1:
+//					state = 7;
+//					break;
+//				default:
+//					break;
+//			}
+//		}
+//		return sum;
+//	}
+
+//	private int sumCheckDigitForAlltd1(String line){
+//		int sum = 0;
+//		int state = 7;
+//		int[] tranfer = tranferValueForall(line);
+//		for (int i = 0 ; i < line.length() ; i++){
+//			sum += (state * tranfer[i]);
+//			switch (state) {
+//				case 7:
+//					state = 3;
+//	/				break;
+///				case 3:
+//					state = 1;
+//					break;
+//				case 1:
+//					state = 7;
+//					break;
+//				default:
+//					break;
+//			}
+//		}
+//		return sum;
+//	}
 
 	private int charToInt(char c){
 		switch (c) {
@@ -385,8 +461,117 @@ public class MainActivity extends Activity {
 		return result;
 	}
 
-	private void MRZ_Type1and3_Show(String lines1, String lines2){
-//		surfaceViewWithOverlay.setLines( lines, resultStatus );
+//	private int[] tranferValueForallTD3(String line){
+//		int[] result = new int[39];
+//		result[38] = charToInt(line.charAt(38));
+//		result[37] = charToInt(line.charAt(37));
+//		result[36] = charToInt(line.charAt(36));
+//		result[35] = charToInt(line.charAt(35));
+//		result[34] = charToInt(line.charAt(34));
+//		result[33] = charToInt(line.charAt(33));
+//		result[32] = charToInt(line.charAt(32));
+//		result[31] = charToInt(line.charAt(31));
+//		result[30] = charToInt(line.charAt(30));
+//		result[29] = charToInt(line.charAt(29));
+//		result[28] = charToInt(line.charAt(28));
+//		result[27] = charToInt(line.charAt(27));
+//		result[26] = charToInt(line.charAt(26));
+//		result[25] = charToInt(line.charAt(25));
+//		result[24] = charToInt(line.charAt(24));
+//		result[23] = charToInt(line.charAt(23));
+//		result[22] = charToInt(line.charAt(22));
+//		result[21] = charToInt(line.charAt(21));
+//		result[20] = charToInt(line.charAt(20));
+//		result[19] = charToInt(line.charAt(19));
+//		result[18] = charToInt(line.charAt(18));
+//		result[17] = charToInt(line.charAt(17));
+//		result[16] = charToInt(line.charAt(16));
+//		result[15] = charToInt(line.charAt(15));
+//		result[14] = charToInt(line.charAt(14));
+//		result[13] = charToInt(line.charAt(13));
+//		result[12] = charToInt(line.charAt(12));
+//		result[11] = charToInt(line.charAt(11));
+//		result[10] = charToInt(line.charAt(10));
+//		result[9] = charToInt(line.charAt(9));
+//		result[8] = charToInt(line.charAt(8));
+//		result[7] = charToInt(line.charAt(7));
+//		result[6] = charToInt(line.charAt(6));
+//		result[5] = charToInt(line.charAt(5));
+//		result[4] = charToInt(line.charAt(4));
+//		result[3] = charToInt(line.charAt(3));
+//		result[2] = charToInt(line.charAt(2));
+//		result[1] = charToInt(line.charAt(1));
+//		result[0] = charToInt(line.charAt(0));
+//		return result;
+//	}
+
+	private int[] tranferValueForall(String line){
+		int[] result = new int[line.length()];
+        for (int i = 0 ; i < line.length() ; i++){
+            result[i] =  charToInt(line.charAt(i));
+        }
+		return result;
+	}
+
+//	private int[] tranferValueForallTD1(String line){
+//		int[] result = new int[52];
+//		result[51] = charToInt(line.charAt(51));
+//		result[50] = charToInt(line.charAt(50));
+//		result[49] = charToInt(line.charAt(49));
+//		result[48] = charToInt(line.charAt(48));
+//		result[47] = charToInt(line.charAt(47));
+//		result[46] = charToInt(line.charAt(46));
+//		result[45] = charToInt(line.charAt(45));
+//		result[44] = charToInt(line.charAt(44));
+//		result[43] = charToInt(line.charAt(43));
+//		result[42] = charToInt(line.charAt(42));
+//		result[41] = charToInt(line.charAt(40));
+//		result[40] = charToInt(line.charAt(40));
+//		result[39] = charToInt(line.charAt(39));
+//		result[38] = charToInt(line.charAt(38));
+//		result[37] = charToInt(line.charAt(37));
+//		result[36] = charToInt(line.charAt(36));
+//		result[35] = charToInt(line.charAt(35));
+//		result[34] = charToInt(line.charAt(34));
+//		result[33] = charToInt(line.charAt(33));
+//		result[32] = charToInt(line.charAt(32));
+//		result[31] = charToInt(line.charAt(31));
+//		result[30] = charToInt(line.charAt(30));
+//		result[29] = charToInt(line.charAt(29));
+//		result[28] = charToInt(line.charAt(28));
+//		result[27] = charToInt(line.charAt(27));
+//		result[26] = charToInt(line.charAt(26));
+//		result[25] = charToInt(line.charAt(25));
+//		result[24] = charToInt(line.charAt(24));
+//		result[23] = charToInt(line.charAt(23));
+//		result[22] = charToInt(line.charAt(22));
+//		result[21] = charToInt(line.charAt(21));
+//		result[20] = charToInt(line.charAt(20));
+//		result[19] = charToInt(line.charAt(19));
+///		result[18] = charToInt(line.charAt(18));
+//		result[17] = charToInt(line.charAt(17));
+//		result[16] = charToInt(line.charAt(16));
+//		result[15] = charToInt(line.charAt(15));
+//		result[14] = charToInt(line.charAt(14));
+///		result[13] = charToInt(line.charAt(13));
+//		result[12] = charToInt(line.charAt(12));
+//		result[11] = charToInt(line.charAt(11));
+//		result[10] = charToInt(line.charAt(10));
+//		result[9] = charToInt(line.charAt(9));
+//		result[8] = charToInt(line.charAt(8));
+//		result[7] = charToInt(line.charAt(7));
+//		result[6] = charToInt(line.charAt(6));
+///		result[5] = charToInt(line.charAt(5));
+//		result[4] = charToInt(line.charAt(4));
+//		result[3] = charToInt(line.charAt(3));
+//		result[2] = charToInt(line.charAt(2));
+//		result[1] = charToInt(line.charAt(1));
+//		result[0] = charToInt(line.charAt(0));
+//		return result;
+//	}
+
+
+	private void MRZ_Type3_Show(String lines1, String lines2){
 		warningTextView.setText( "" );
 		stopRecognition();
 		stableResultHasBeenReached = true;
@@ -403,57 +588,135 @@ public class MainActivity extends Activity {
 			}
 		}
 
-		String birthDate = lines2.substring(13, 19);
-		String passportID = (lines2.substring(0, 9));
-		String expire = lines2.substring(21, 27);
 
-//		resultTextView.setText(show_text);
+		String	 birthDate = lines2.substring(13, 19);
+		String	 passportID = (lines2.substring(0, 9));
+		String	 expire = lines2.substring(21, 27);
+
 		Intent intent = new Intent(MainActivity.this, ResultActivity.class);
 		intent.putExtra("type", type);
 		intent.putExtra("name", name);
 		intent.putExtra("surname", parts[0]);
-		intent.putExtra("country", lines1.substring(2,5));
-		intent.putExtra("nationality", lines2.substring(10,13));
+		intent.putExtra("country", lines1.substring(2, 5).replace("<", ""));
+		intent.putExtra("nationality", lines2.substring(10, 13).replace("<", ""));
 		intent.putExtra("birthDate", birthDate);
 		intent.putExtra("sex", lines2.substring(20, 21));
 		intent.putExtra("expiry", expire);
 		intent.putExtra("passportNo", passportID.replace("<", ""));
 
 		String errorCode = "";
-		int checkBD = sumCheckDigitForBD(birthDate);
-		int checkEXP = sumCheckDigitForEXP(expire);
-		int checkPPID = sumCheckDigitForPPID(passportID);
-		int checkAll = checkBD + checkEXP + checkPPID; 
 
+		int	checkBD = sumCheckDigitForBD(birthDate);
+		int	checkEXP = sumCheckDigitForEXP(expire);
+		int	checkPPID = sumCheckDigitForPPID(passportID);
+		String checkLine = lines2.substring(0, 10)+lines2.substring(13, 20)+lines2.substring(21, 43);
+		int	checkAll = sumCheckDigitForAll(checkLine);
 
-		if( hmap.get(lines2.charAt(9)) != (checkPPID%10) ){
+		if(charToInt(lines2.charAt(9)) != (checkPPID%10) ){
 			errorCode += "1";
 		}else{
 			errorCode += "0";
 		}
 
-		if( hmap.get(lines2.charAt(19)) != (checkBD%10) ){
+		if( charToInt(lines2.charAt(19)) != (checkBD%10) ){
 			errorCode += "1";
 		}else{
 			errorCode += "0";
 		}
 
-		if( hmap.get(lines2.charAt(27)) != (checkEXP%10) ){
+		if( charToInt(lines2.charAt(27)) != (checkEXP%10) ){
 			errorCode += "1";
 		}else{
 			errorCode += "0";
 		}
 
-		errorCode += "0";
+		if( charToInt(lines2.charAt(43)) != (checkAll%10) ){
+			errorCode += "1";
+		}else{
+			errorCode += "0";
+		}
 
+
+		intent.putExtra("line1", lines1);
+		intent.putExtra("line2", lines2);
 		intent.putExtra("error", errorCode);
 		startActivity(intent);
 	}
 
-	private void MRZ_Type2_Show(String lines1, String lines2, String lines3){
-//		surfaceViewWithOverlay.setLines( lines, resultStatus );
-		stopRecognition();
+	private void MRZ_Type2_Show(String lines1, String lines2){
 		warningTextView.setText( "" );
+		stopRecognition();
+		stableResultHasBeenReached = true;
+		surfaceViewWithOverlay.setFillBackground( true );
+		String getName = lines1.substring(5);
+		String[] parts = getName.split("<");
+		String name ="";
+		String type = (lines1.substring(0,2)).replace("<", "");
+
+		for (int i = 1; parts.length > i; i++){
+			if (parts[i] != " "){
+				name += parts[i];
+				name += " ";
+			}
+		}
+
+
+		String	 birthDate = lines2.substring(13, 19);
+		String	 passportID = (lines2.substring(0, 9));
+		String	 expire = lines2.substring(21, 27);
+
+		Intent intent = new Intent(MainActivity.this, ResultActivity.class);
+		intent.putExtra("type", type);
+		intent.putExtra("name", name);
+		intent.putExtra("surname", parts[0]);
+		intent.putExtra("country", lines1.substring(2, 5).replace("<", ""));
+		intent.putExtra("nationality", lines2.substring(10, 13).replace("<", ""));
+		intent.putExtra("birthDate", birthDate);
+		intent.putExtra("sex", lines2.substring(20, 21));
+		intent.putExtra("expiry", expire);
+		intent.putExtra("passportNo", passportID.replace("<", ""));
+
+		String errorCode = "";
+
+		int	checkBD = sumCheckDigitForBD(birthDate);
+		int	checkEXP = sumCheckDigitForEXP(expire);
+		int	checkPPID = sumCheckDigitForPPID(passportID);
+		String checkLine = lines2.substring(0, 10)+lines2.substring(13, 20)+lines2.substring(21, 35);
+		int	checkAll = sumCheckDigitForAll(checkLine);
+
+		if(charToInt(lines2.charAt(9)) != (checkPPID%10) ){
+			errorCode += "1";
+		}else{
+			errorCode += "0";
+		}
+
+		if( charToInt(lines2.charAt(19)) != (checkBD%10) ){
+			errorCode += "1";
+		}else{
+			errorCode += "0";
+		}
+
+		if( charToInt(lines2.charAt(27)) != (checkEXP%10) ){
+			errorCode += "1";
+		}else{
+			errorCode += "0";
+		}
+
+		if( charToInt(lines2.charAt(35)) != (checkAll%10) ){
+			errorCode += "1";
+		}else{
+			errorCode += "0";
+		}
+
+		intent.putExtra("line1", lines1);
+		intent.putExtra("line2", lines2);
+		intent.putExtra("error", errorCode);
+		startActivity(intent);
+	}
+
+	private void MRZ_Type1_Show(String lines1, String lines2, String lines3){
+		warningTextView.setText( "" );
+		stopRecognition();
 		stableResultHasBeenReached = true;
 		surfaceViewWithOverlay.setFillBackground( true );
 		String getName = lines3;
@@ -469,18 +732,17 @@ public class MainActivity extends Activity {
 		}
 
 		String birthDate = lines2.substring(0, 6);
-		String passportID = (lines1.substring(5, 15));
+		String passportID = lines1.substring(5, 14);
 		String expire = lines2.substring(8, 14);
 
-//		resultTextView.setText(show_text);
 		Intent intent = new Intent(MainActivity.this, ResultActivity.class);
 		intent.putExtra("type", type);
 		intent.putExtra("name", name);
 		intent.putExtra("surname", parts[0]);
-		intent.putExtra("country", lines1.substring(2,5));
-		intent.putExtra("nationality", lines2.substring(15, 18));
+		intent.putExtra("country", lines1.substring(2,5).replace("<", ""));
+		intent.putExtra("nationality", lines2.substring(15, 18).replace("<", ""));
 		intent.putExtra("birthDate", birthDate);
-		intent.putExtra("sex", lines2.substring(6, 7));
+		intent.putExtra("sex", lines2.substring(7, 8));
 		intent.putExtra("expiry", expire);
 		intent.putExtra("passportNo", passportID.replace("<", ""));
 
@@ -488,31 +750,37 @@ public class MainActivity extends Activity {
 		int checkBD = sumCheckDigitForBD(birthDate);
 		int checkEXP = sumCheckDigitForEXP(expire);
 		int checkPPID = sumCheckDigitForPPID(passportID);
-		int checkAll = checkBD + checkEXP + checkPPID;
+		String checkLine = lines1.substring(5, 30)+lines2.substring(0, 7)+lines2.substring(8, 15)+lines2.substring(18, 29);
+		int	checkAll = sumCheckDigitForAll(checkLine);
 
 
-		if( hmap.get(lines1.charAt(15)) != (checkPPID%10) ){
+		if( charToInt(lines1.charAt(14)) != (checkPPID%10) ){
 			errorCode += "1";
 		}else{
 			errorCode += "0";
 		}
 
-		if( hmap.get(lines2.charAt(6)) != (checkBD%10) ){
+		if( charToInt(lines2.charAt(6)) != (checkBD%10) ){
+			errorCode += "1";
+		}else{
+			errorCode += "0";
+		}
+		if( charToInt(lines2.charAt(14)) != (checkEXP%10) ){
 			errorCode += "1";
 		}else{
 			errorCode += "0";
 		}
 
-		if( hmap.get(lines2.charAt(14)) != (checkEXP%10) ){
+		if( charToInt(lines2.charAt(29)) != (checkAll%10) ){
 			errorCode += "1";
-		}else{
-			errorCode += "0";
-		}
-
-		errorCode += "0";
+		}else {
+            errorCode += "0";
+        }
 
 		intent.putExtra("error", errorCode);
-
+        intent.putExtra("line1", lines1);
+        intent.putExtra("line2", lines2);
+        intent.putExtra("line3", lines3);
 		startActivity(intent);
 	}
 

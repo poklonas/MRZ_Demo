@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:scrollbars="horizontal|vertical">
 
     <TextView
         android:id="@+id/passportNo"
@@ -65,6 +66,29 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="expiryView"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="22sp" />
+
+    <TextView
+        android:id="@+id/textLine1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Line1"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="22sp" />
+
+    <TextView
+        android:id="@+id/textLine2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Line2"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="22sp" />
+
+    <TextView
+        android:id="@+id/textLine3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textSize="22sp" />
 
