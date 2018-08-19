@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Tue Aug 14 21:01:43 ICT 2018
+#Sun Aug 19 21:58:58 ICT 2018
 7.path=patterns/FindText.rom
 2.base=D\:\\Code\\New folder\\New folder\\sample-textcapture\\app\\build\\intermediates\\assets\\debug
 5.set=NATIVE_RESOURCE

@@ -180,14 +180,14 @@ public class MainActivity extends Activity {
 	//Reader result from text recognition
 	private void get_result(ITextCaptureService.TextLine[] lines,
 							ITextCaptureService.ResultStabilityStatus resultStatus){
-		if (lines.length > 2){
+		if (lines.length >= 2){
 			String data1 = lines[lines.length - 2].Text;
 			String data2 = lines[lines.length - 1].Text;
 			String lines1 = data1.replace("«","<<");
 			String lines2 = data2.replace("«","<<");
 			int sizeLine1 = lines1.length();
 			int sizeLine2 = lines2.length();
-			if(lines.length > 3){
+			if(lines.length >= 3){
 				String data3 = lines[lines.length - 3].Text;
 				String lines3 = data3.replace("«","<<");
 				int sizeLine3 = lines3.length();
@@ -208,74 +208,74 @@ public class MainActivity extends Activity {
 		}
 	}
 
-	private int sumCheckDigitForPPID(String line){
-		int sum = 0;
-		int state = 7;
-		int[] tranfer = tranferValueForPPID(line);
-		for (int i = 0 ; i < line.length() ; i++){
-			sum += (state * tranfer[i]);
-			switch (state) {
-				case 7:
-					state = 3;
-					break;
-				case 3:
-					state = 1;
-					break;
-				case 1:
-					state = 7;
-					break;
-				default:
-					break;
-			}
-		}
-		return sum;
-	}
+//	private int sumCheckDigitForPPID(String line){
+//		int sum = 0;
+//		int state = 7;
+//		int[] tranfer = tranferValueForPPID(line);
+//		for (int i = 0 ; i < line.length() ; i++){
+//			sum += (state * tranfer[i]);
+//			switch (state) {
+//				case 7:
+//					state = 3;
+//					break;
+//				case 3:
+///					state = 1;
+	//				break;
+	//			case 1:
+	//				state = 7;
+	//				break;
+	//			default:
+	//				break;
+	//		}
+	//	}
+	//	return sum;
+	//}
 
-	private int sumCheckDigitForEXP(String line){
-		int sum = 0;
-		int state = 7;
-		int[] tranfer = tranferValueForEXP(line);
-		for (int i = 0 ; i < line.length() ; i++){
-			sum += (state * tranfer[i]);
-			switch (state) {
-				case 7:
-					state = 3;
-					break;
-				case 3:
-					state = 1;
-					break;
-				case 1:
-					state = 7;
-					break;
-				default:
-					break;
-			}
-		}
-		return sum;
-	}
+//	private int sumCheckDigitForEXP(String line){
+//		int sum = 0;
+//		int state = 7;
+//		int[] tranfer = tranferValueForEXP(line);
+//		for (int i = 0 ; i < line.length() ; i++){
+//			sum += (state * tranfer[i]);
+//			switch (state) {
+//				case 7:
+//					state = 3;
+//					break;
+//				case 3:
+//					state = 1;
+//					break;
+///				case 1:
+	//				state = 7;
+	//				break;
+	//			default:
+	//				break;
+	//		}
+	//	}
+	//	return sum;
+	//}
 
-	private int sumCheckDigitForBD(String line){
-		int sum = 0;
-		int state = 7;
-		int[] tranfer = tranferValueForBD(line);
-		for (int i = 0 ; i < line.length() ; i++){
-			sum += (state * tranfer[i]);
-			switch (state) {
-				case 7:
-					state = 3;
-					break;
-				case 3:
-					state = 1;
-					break;
-				case 1:
-					state = 7;
-					break;
-				default:
-					break;
-			}
-		}
-		return sum;
-	}
+//	private int sumCheckDigitForBD(String line){
+//		int sum = 0;
+//		int state = 7;
+//		int[] tranfer = tranferValueForBD(line);
+//		for (int i = 0 ; i < line.length() ; i++){
+//			sum += (state * tranfer[i]);
+//			switch (state) {
+//				case 7:
+//					state = 3;
+//					break;
+///				case 3:
+//					state = 1;
+//					break;
+//				case 1:
+//					state = 7;
+//					break;
+//				default:
+//					break;
+//			}
+//		}
+//		return sum;
+//	}
 
 	private int sumCheckDigitForAll(String line){
 		int sum = 0;
@@ -425,41 +425,41 @@ public class MainActivity extends Activity {
 		}
 	}
 
-	private int[] tranferValueForPPID(String line){
-		int[] result = new int[9];
-		result[8] = charToInt(line.charAt(8));
-		result[7] = charToInt(line.charAt(7));
-		result[6] = charToInt(line.charAt(6));
-		result[5] = charToInt(line.charAt(5));
-		result[4] = charToInt(line.charAt(4));
-		result[3] = charToInt(line.charAt(3));
-		result[2] = charToInt(line.charAt(2));
-		result[1] = charToInt(line.charAt(1));
-		result[0] = charToInt(line.charAt(0));
-		return result;
-	}
+//	private int[] tranferValueForPPID(String line){
+//		int[] result = new int[9];
+//		result[8] = charToInt(line.charAt(8));
+//		result[7] = charToInt(line.charAt(7));
+//		result[6] = charToInt(line.charAt(6));
+//		result[5] = charToInt(line.charAt(5));
+//		result[4] = charToInt(line.charAt(4));
+//		result[3] = charToInt(line.charAt(3));
+//		result[2] = charToInt(line.charAt(2));
+//		result[1] = charToInt(line.charAt(1));
+//		result[0] = charToInt(line.charAt(0));
+//		return result;
+//	}
 
-	private int[] tranferValueForEXP(String line){
-		int[] result = new int[6];
-		result[5] = charToInt(line.charAt(5));
-		result[4] = charToInt(line.charAt(4));
-		result[3] = charToInt(line.charAt(3));
-		result[2] = charToInt(line.charAt(2));
-		result[1] = charToInt(line.charAt(1));
-		result[0] = charToInt(line.charAt(0));
-		return result;
-	}
+//	private int[] tranferValueForEXP(String line){
+//		int[] result = new int[6];
+//		result[5] = charToInt(line.charAt(5));
+//		result[4] = charToInt(line.charAt(4));
+//		result[3] = charToInt(line.charAt(3));
+//		result[2] = charToInt(line.charAt(2));
+//		result[1] = charToInt(line.charAt(1));
+//		result[0] = charToInt(line.charAt(0));
+//		return result;
+//	}
 
-	private int[] tranferValueForBD(String line){
-		int[] result = new int[6];
-		result[5] = charToInt(line.charAt(5));
-		result[4] = charToInt(line.charAt(4));
-		result[3] = charToInt(line.charAt(3));
-		result[2] = charToInt(line.charAt(2));
-		result[1] = charToInt(line.charAt(1));
-		result[0] = charToInt(line.charAt(0));
-		return result;
-	}
+//	private int[] tranferValueForBD(String line){
+//		int[] result = new int[6];
+//		result[5] = charToInt(line.charAt(5));
+//		result[4] = charToInt(line.charAt(4));
+//		result[3] = charToInt(line.charAt(3));
+//		result[2] = charToInt(line.charAt(2));
+//		result[1] = charToInt(line.charAt(1));
+//		result[0] = charToInt(line.charAt(0));
+//		return result;
+//	}
 
 //	private int[] tranferValueForallTD3(String line){
 //		int[] result = new int[39];
@@ -570,6 +570,67 @@ public class MainActivity extends Activity {
 //		return result;
 //	}
 
+	private char checkCharOnlyInt(char c){
+		if(c =='O' || c == 'o'){
+			return '0';
+		}else if(c == 'Z' || c == 'z'){
+			return '2';
+		}else if(c == 'i' || c == 'I'){
+			return '1';
+		}else{
+			return c;
+		}
+	}
+
+	private String checkTextOnlySex(String c){
+		if(c.charAt(0) =='H' || c.charAt(0) == 'h'){
+			return "M";
+		}else if(c.charAt(0) == 'N' || c.charAt(0) == 'n'){
+			return "M";
+		}else{
+			return c;
+		}
+	}
+
+	private String checkTextOnlyInt(String lines){
+		String result = "";
+		for (int i = 0 ; i < lines.length() ; i++){
+			if(lines.charAt(i) =='O' || lines.charAt(i) == 'o'){
+				result += '0';
+			}else if(lines.charAt(i) == 'Z' || lines.charAt(i) == 'z'){
+				result += '2';
+			}else if(lines.charAt(i) == 'i' || lines.charAt(i) == 'I'){
+				result += '1';
+			}else{
+				result += lines.charAt(i);
+			}
+		}
+		return result;
+	}
+
+	private String checkTextName(String lines){
+		String result = "";
+		for (int i = 0 ; i < lines.length() ; i++){
+			if(lines.charAt(i) =='*'){
+				result += 'A';
+			}else{
+				result += lines.charAt(i);
+			}
+		}
+		return result;
+	}
+
+	private String checkTextPassportNumber(String lines){
+		String result = "";
+		for (int i = 0 ; i < lines.length() ; i++){
+			if(lines.charAt(i) =='*'){
+				result += 'A';
+			}else{
+				result += lines.charAt(i);
+			}
+		}
+		return result;
+	}
 
 	private void MRZ_Type3_Show(String lines1, String lines2){
 		warningTextView.setText( "" );
@@ -589,48 +650,48 @@ public class MainActivity extends Activity {
 		}
 
 
-		String	 birthDate = lines2.substring(13, 19);
-		String	 passportID = (lines2.substring(0, 9));
-		String	 expire = lines2.substring(21, 27);
+		String	 birthDate = checkTextOnlyInt(lines2.substring(13, 19));
+		String	 passportID = checkTextPassportNumber((lines2.substring(0, 9)));
+		String	 expire = checkTextOnlyInt(lines2.substring(21, 27));
 
 		Intent intent = new Intent(MainActivity.this, ResultActivity.class);
 		intent.putExtra("type", type);
-		intent.putExtra("name", name);
+		intent.putExtra("name", checkTextName(name));
 		intent.putExtra("surname", parts[0]);
-		intent.putExtra("country", lines1.substring(2, 5).replace("<", ""));
-		intent.putExtra("nationality", lines2.substring(10, 13).replace("<", ""));
+		intent.putExtra("country", checkTextName(lines1.substring(2, 5).replace("<", "")));
+		intent.putExtra("nationality", checkTextName(lines2.substring(10, 13).replace("<", "")));
 		intent.putExtra("birthDate", birthDate);
-		intent.putExtra("sex", lines2.substring(20, 21));
+		intent.putExtra("sex", checkTextOnlySex(lines2.substring(20, 21)));
 		intent.putExtra("expiry", expire);
 		intent.putExtra("passportNo", passportID.replace("<", ""));
 
 		String errorCode = "";
 
-		int	checkBD = sumCheckDigitForBD(birthDate);
-		int	checkEXP = sumCheckDigitForEXP(expire);
-		int	checkPPID = sumCheckDigitForPPID(passportID);
+		int	checkBD = sumCheckDigitForAll(birthDate);
+		int	checkEXP = sumCheckDigitForAll(expire);
+		int	checkPPID = sumCheckDigitForAll(passportID);
 		String checkLine = lines2.substring(0, 10)+lines2.substring(13, 20)+lines2.substring(21, 43);
 		int	checkAll = sumCheckDigitForAll(checkLine);
 
-		if(charToInt(lines2.charAt(9)) != (checkPPID%10) ){
+		if(charToInt(checkCharOnlyInt(lines2.charAt(9))) != (checkPPID%10) ){
 			errorCode += "1";
 		}else{
 			errorCode += "0";
 		}
 
-		if( charToInt(lines2.charAt(19)) != (checkBD%10) ){
+		if( charToInt(checkCharOnlyInt(lines2.charAt(19))) != (checkBD%10) ){
 			errorCode += "1";
 		}else{
 			errorCode += "0";
 		}
 
-		if( charToInt(lines2.charAt(27)) != (checkEXP%10) ){
+		if( charToInt(checkCharOnlyInt(lines2.charAt(27))) != (checkEXP%10) ){
 			errorCode += "1";
 		}else{
 			errorCode += "0";
 		}
 
-		if( charToInt(lines2.charAt(43)) != (checkAll%10) ){
+		if( charToInt(checkCharOnlyInt(lines2.charAt(43))) != (checkAll%10) ){
 			errorCode += "1";
 		}else{
 			errorCode += "0";
@@ -661,48 +722,48 @@ public class MainActivity extends Activity {
 		}
 
 
-		String	 birthDate = lines2.substring(13, 19);
-		String	 passportID = (lines2.substring(0, 9));
-		String	 expire = lines2.substring(21, 27);
+		String	 birthDate = checkTextOnlyInt(lines2.substring(13, 19));
+		String	 passportID = checkTextPassportNumber((lines2.substring(0, 9)));
+		String	 expire = checkTextOnlyInt(lines2.substring(21, 27));
 
 		Intent intent = new Intent(MainActivity.this, ResultActivity.class);
 		intent.putExtra("type", type);
-		intent.putExtra("name", name);
+		intent.putExtra("name", checkTextName(name));
 		intent.putExtra("surname", parts[0]);
-		intent.putExtra("country", lines1.substring(2, 5).replace("<", ""));
-		intent.putExtra("nationality", lines2.substring(10, 13).replace("<", ""));
+		intent.putExtra("country", checkTextName(lines1.substring(2, 5).replace("<", "")));
+		intent.putExtra("nationality", checkTextName(lines2.substring(10, 13).replace("<", "")));
 		intent.putExtra("birthDate", birthDate);
-		intent.putExtra("sex", lines2.substring(20, 21));
+		intent.putExtra("sex", checkTextOnlySex(lines2.substring(20,21)));
 		intent.putExtra("expiry", expire);
 		intent.putExtra("passportNo", passportID.replace("<", ""));
 
 		String errorCode = "";
 
-		int	checkBD = sumCheckDigitForBD(birthDate);
-		int	checkEXP = sumCheckDigitForEXP(expire);
-		int	checkPPID = sumCheckDigitForPPID(passportID);
+		int	checkBD = sumCheckDigitForAll(birthDate);
+		int	checkEXP = sumCheckDigitForAll(expire);
+		int	checkPPID = sumCheckDigitForAll(passportID);
 		String checkLine = lines2.substring(0, 10)+lines2.substring(13, 20)+lines2.substring(21, 35);
 		int	checkAll = sumCheckDigitForAll(checkLine);
 
-		if(charToInt(lines2.charAt(9)) != (checkPPID%10) ){
+		if(charToInt(checkCharOnlyInt(lines2.charAt(9))) != (checkPPID%10) ){
 			errorCode += "1";
 		}else{
 			errorCode += "0";
 		}
 
-		if( charToInt(lines2.charAt(19)) != (checkBD%10) ){
+		if( charToInt(checkCharOnlyInt(lines2.charAt(19))) != (checkBD%10) ){
 			errorCode += "1";
 		}else{
 			errorCode += "0";
 		}
 
-		if( charToInt(lines2.charAt(27)) != (checkEXP%10) ){
+		if( charToInt(checkCharOnlyInt(lines2.charAt(27))) != (checkEXP%10) ){
 			errorCode += "1";
 		}else{
 			errorCode += "0";
 		}
 
-		if( charToInt(lines2.charAt(35)) != (checkAll%10) ){
+		if( charToInt(checkCharOnlyInt(lines2.charAt(35))) != (checkAll%10) ){
 			errorCode += "1";
 		}else{
 			errorCode += "0";
@@ -731,47 +792,47 @@ public class MainActivity extends Activity {
 			}
 		}
 
-		String birthDate = lines2.substring(0, 6);
-		String passportID = lines1.substring(5, 14);
-		String expire = lines2.substring(8, 14);
+		String birthDate = checkTextOnlyInt(lines2.substring(0, 6));
+		String passportID = checkTextPassportNumber(lines1.substring(5, 14));
+		String expire = checkTextOnlyInt(lines2.substring(8, 14));
 
 		Intent intent = new Intent(MainActivity.this, ResultActivity.class);
 		intent.putExtra("type", type);
-		intent.putExtra("name", name);
+		intent.putExtra("name", checkTextName(name));
 		intent.putExtra("surname", parts[0]);
-		intent.putExtra("country", lines1.substring(2,5).replace("<", ""));
-		intent.putExtra("nationality", lines2.substring(15, 18).replace("<", ""));
+		intent.putExtra("country", checkTextName(lines1.substring(2,5).replace("<", "")));
+		intent.putExtra("nationality", checkTextName(lines2.substring(15, 18).replace("<", "")));
 		intent.putExtra("birthDate", birthDate);
-		intent.putExtra("sex", lines2.substring(7, 8));
+		intent.putExtra("sex", checkTextOnlySex(lines2.substring(7,8)));
 		intent.putExtra("expiry", expire);
 		intent.putExtra("passportNo", passportID.replace("<", ""));
 
 		String errorCode = "";
-		int checkBD = sumCheckDigitForBD(birthDate);
-		int checkEXP = sumCheckDigitForEXP(expire);
-		int checkPPID = sumCheckDigitForPPID(passportID);
+		int checkBD = sumCheckDigitForAll(birthDate);
+		int checkEXP = sumCheckDigitForAll(expire);
+		int checkPPID = sumCheckDigitForAll(passportID);
 		String checkLine = lines1.substring(5, 30)+lines2.substring(0, 7)+lines2.substring(8, 15)+lines2.substring(18, 29);
 		int	checkAll = sumCheckDigitForAll(checkLine);
 
 
-		if( charToInt(lines1.charAt(14)) != (checkPPID%10) ){
+		if( charToInt(checkCharOnlyInt(lines1.charAt(14))) != (checkPPID%10) ){
 			errorCode += "1";
 		}else{
 			errorCode += "0";
 		}
 
-		if( charToInt(lines2.charAt(6)) != (checkBD%10) ){
+		if( charToInt(checkCharOnlyInt(lines2.charAt(6))) != (checkBD%10) ){
 			errorCode += "1";
 		}else{
 			errorCode += "0";
 		}
-		if( charToInt(lines2.charAt(14)) != (checkEXP%10) ){
+		if( charToInt(checkCharOnlyInt(lines2.charAt(14))) != (checkEXP%10) ){
 			errorCode += "1";
 		}else{
 			errorCode += "0";
 		}
 
-		if( charToInt(lines2.charAt(29)) != (checkAll%10) ){
+		if( charToInt(checkCharOnlyInt(lines2.charAt(29))) != (checkAll%10) ){
 			errorCode += "1";
 		}else {
             errorCode += "0";
