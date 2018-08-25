@@ -1,103 +1,171 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:scrollbars="horizontal|vertical">
-
-    <TextView
-        android:id="@+id/passportNo"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ScrollView01"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="passportNo"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textSize="22sp" />
+        android:orientation="vertical"
+        android:scrollbars="horizontal|vertical">
 
-    <TextView
-        android:id="@+id/typeView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="typeView"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textSize="22sp" />
+        <TextView
+            android:id="@+id/dateReceived"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="dateReceived"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textSize="22sp" />
 
-    <TextView
-        android:id="@+id/nameView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="nameView"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textSize="22sp" />
+        <TextView
+            android:id="@+id/dateSend"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="dateSend"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textSize="22sp" />
 
-    <TextView
-        android:id="@+id/countryView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="countryView"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textSize="22sp" />
+        <TextView
+            android:id="@+id/errorStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="errorStatus "
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textSize="22sp" />
 
-    <TextView
-        android:id="@+id/NationalityView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="NationalityView"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+        <TextView
+            android:id="@+id/errorCodeShow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="errorCodeShow "
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textSize="22sp" />
 
-    <TextView
-        android:id="@+id/birthDateView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="birthDateView"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textSize="22sp" />
+        <TextView
+            android:id="@+id/doctype"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="doctype "
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textSize="22sp" />
 
-    <TextView
-        android:id="@+id/sexView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="sexView"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textSize="22sp" />
+        <TextView
+            android:id="@+id/typeView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="typeView"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textSize="22sp" />
 
-    <TextView
-        android:id="@+id/expiryView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="expiryView"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textSize="22sp" />
+        <TextView
+            android:id="@+id/countryView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="countryView"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textSize="22sp" />
 
-    <TextView
-        android:id="@+id/textLine1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Line1"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textSize="22sp" />
+        <TextView
+            android:id="@+id/passportNo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="passportNo"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textSize="22sp" />
 
-    <TextView
-        android:id="@+id/textLine2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Line2"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textSize="22sp" />
+        <TextView
+            android:id="@+id/optionalData1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="optionalData1 "
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textSize="22sp" />
 
-    <TextView
-        android:id="@+id/textLine3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textSize="22sp" />
+        <TextView
+            android:id="@+id/birthDateView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="birthDateView"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textSize="22sp" />
 
-    <Button
-        android:id="@+id/button_back"
-        android:layout_width="wrap_content"
-        android:layout_height="34dp"
-        android:text="Back"
-        android:textAlignment="center"
-        android:textSize="12sp" />
+        <TextView
+            android:id="@+id/sexView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="sexView"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textSize="22sp" />
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/expiryView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="expiryView"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textSize="22sp" />
+
+        <TextView
+            android:id="@+id/NationalityView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="NationalityView"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+        <TextView
+            android:id="@+id/optionalData2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="optionalData2"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+        <TextView
+            android:id="@+id/personalNo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="personalNo"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textSize="22sp" />
+
+        <TextView
+            android:id="@+id/nameView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="nameView"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textSize="22sp" />
+
+        <TextView
+            android:id="@+id/textLine1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Line1"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textSize="22sp" />
+
+        <TextView
+            android:id="@+id/textLine2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Line2"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textSize="22sp" />
+
+        <TextView
+            android:id="@+id/textLine3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textSize="22sp" />
+
+        <Button
+            android:id="@+id/button_back"
+            android:layout_width="wrap_content"
+            android:layout_height="34dp"
+            android:text="Back"
+            android:textAlignment="center"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+</ScrollView>

@@ -30,9 +30,10 @@ import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
-
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import com.abbyy.mobile.rtr.Engine;
-import com.abbyy.mobile.rtr.IRecognitionService;
 import com.abbyy.mobile.rtr.ITextCaptureService;
 import com.abbyy.mobile.rtr.Language;
 
@@ -642,6 +643,14 @@ public class MainActivity extends Activity {
 		String name ="";
 		String type = (lines1.substring(0,2)).replace("<", "");
 
+		String errorCodeShow = "";
+
+		if(lines1.charAt(0) == 'p' || lines1.charAt(0) == 'P'){
+		}else{
+			errorCodeShow += " 2 :";
+		}
+
+
 		for (int i = 1; parts.length > i; i++){
 			if (parts[i] != " "){
 				name += parts[i];
@@ -672,32 +681,51 @@ public class MainActivity extends Activity {
 		int	checkPPID = sumCheckDigitForAll(passportID);
 		String checkLine = lines2.substring(0, 10)+lines2.substring(13, 20)+lines2.substring(21, 43);
 		int	checkAll = sumCheckDigitForAll(checkLine);
+		int checkPersonal = sumCheckDigitForAll(lines2.substring(28, 42));
 
 		if(charToInt(checkCharOnlyInt(lines2.charAt(9))) != (checkPPID%10) ){
 			errorCode += "1";
+			errorCodeShow += " 4 :";
 		}else{
 			errorCode += "0";
 		}
 
 		if( charToInt(checkCharOnlyInt(lines2.charAt(19))) != (checkBD%10) ){
 			errorCode += "1";
+			errorCodeShow += " 5 :";
 		}else{
 			errorCode += "0";
 		}
 
 		if( charToInt(checkCharOnlyInt(lines2.charAt(27))) != (checkEXP%10) ){
 			errorCode += "1";
+			errorCodeShow += " 6 :";
 		}else{
 			errorCode += "0";
 		}
-
 		if( charToInt(checkCharOnlyInt(lines2.charAt(43))) != (checkAll%10) ){
 			errorCode += "1";
+			errorCodeShow += " 8 :";
+			intent.putExtra("errorStatus", "1");
+		}else{
+			errorCode += "0";
+			intent.putExtra("errorStatus", "0");
+		}
+
+		if( charToInt(checkCharOnlyInt(lines2.charAt(42))) != (checkPersonal%10) ){
+			//errorCode += "1";
+			errorCodeShow += " 7 :";
 		}else{
 			errorCode += "0";
 		}
 
-
+		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		Date date = new Date();
+		intent.putExtra("dateReceived", dateFormat.format(date));
+		intent.putExtra("dateSend", dateFormat.format(date));
+		String doctype = "3";
+		intent.putExtra("doctype", doctype);
+		intent.putExtra("errorCodeShow", errorCodeShow);
 		intent.putExtra("line1", lines1);
 		intent.putExtra("line2", lines2);
 		intent.putExtra("error", errorCode);
@@ -721,6 +749,13 @@ public class MainActivity extends Activity {
 			}
 		}
 
+		String errorCodeShow = "";
+
+		if(lines1.charAt(0) == 'A' || lines1.charAt(0) == 'C' || lines1.charAt(0) == 'I' || lines1.charAt(0) == 'a' || lines1.charAt(0) != 'c' || lines1.charAt(0) == 'i'){
+
+		}else{
+			errorCodeShow += " 2 :";
+		}
 
 		String	 birthDate = checkTextOnlyInt(lines2.substring(13, 19));
 		String	 passportID = checkTextPassportNumber((lines2.substring(0, 9)));
@@ -747,28 +782,40 @@ public class MainActivity extends Activity {
 
 		if(charToInt(checkCharOnlyInt(lines2.charAt(9))) != (checkPPID%10) ){
 			errorCode += "1";
+			errorCodeShow += " 4 :";
 		}else{
 			errorCode += "0";
 		}
 
 		if( charToInt(checkCharOnlyInt(lines2.charAt(19))) != (checkBD%10) ){
 			errorCode += "1";
+			errorCodeShow += " 5 :";
 		}else{
 			errorCode += "0";
 		}
 
 		if( charToInt(checkCharOnlyInt(lines2.charAt(27))) != (checkEXP%10) ){
 			errorCode += "1";
+			errorCodeShow += " 6 :";
 		}else{
 			errorCode += "0";
 		}
 
 		if( charToInt(checkCharOnlyInt(lines2.charAt(35))) != (checkAll%10) ){
 			errorCode += "1";
+			errorCodeShow += " 8 :";
+			intent.putExtra("errorStatus", "1");
 		}else{
 			errorCode += "0";
+			intent.putExtra("errorStatus", "0");
 		}
-
+		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		Date date = new Date();
+		intent.putExtra("dateReceived", dateFormat.format(date));
+		intent.putExtra("dateSend", dateFormat.format(date));
+		String doctype = "2";
+		intent.putExtra("doctype", doctype);
+		intent.putExtra("errorCodeShow", errorCodeShow);
 		intent.putExtra("line1", lines1);
 		intent.putExtra("line2", lines2);
 		intent.putExtra("error", errorCode);
@@ -790,6 +837,14 @@ public class MainActivity extends Activity {
 				name += parts[i];
 				name += " ";
 			}
+		}
+
+		String errorCodeShow = "";
+
+		if(lines1.charAt(0) == 'A' || lines1.charAt(0) == 'C' || lines1.charAt(0) == 'I' || lines1.charAt(0) == 'a' || lines1.charAt(0) != 'c' || lines1.charAt(0) == 'i'){
+
+		}else{
+			errorCodeShow += " 2 :";
 		}
 
 		String birthDate = checkTextOnlyInt(lines2.substring(0, 6));
@@ -817,27 +872,40 @@ public class MainActivity extends Activity {
 
 		if( charToInt(checkCharOnlyInt(lines1.charAt(14))) != (checkPPID%10) ){
 			errorCode += "1";
+			errorCodeShow += " 4 :";
 		}else{
 			errorCode += "0";
 		}
 
 		if( charToInt(checkCharOnlyInt(lines2.charAt(6))) != (checkBD%10) ){
 			errorCode += "1";
+			errorCodeShow += " 5 :";
 		}else{
 			errorCode += "0";
 		}
 		if( charToInt(checkCharOnlyInt(lines2.charAt(14))) != (checkEXP%10) ){
 			errorCode += "1";
+			errorCodeShow += " 6 :";
 		}else{
 			errorCode += "0";
 		}
 
 		if( charToInt(checkCharOnlyInt(lines2.charAt(29))) != (checkAll%10) ){
 			errorCode += "1";
+			errorCodeShow += " 8 :";
+			intent.putExtra("errorStatus", "1");
 		}else {
             errorCode += "0";
+			intent.putExtra("errorStatus", "0");
         }
 
+		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		Date date = new Date();
+		intent.putExtra("dateReceived", dateFormat.format(date));
+		intent.putExtra("dateSend", dateFormat.format(date));
+		String doctype = "1";
+		intent.putExtra("doctype", doctype);
+		intent.putExtra("errorCodeShow", errorCodeShow);
 		intent.putExtra("error", errorCode);
         intent.putExtra("line1", lines1);
         intent.putExtra("line2", lines2);
