@@ -142,8 +142,8 @@ public class ResultActivity extends Activity {
             dateSend.setText("Date Time Send : " +dateSendS);
             errorStatus.setText("Error Status : " +errorStatusS);
             doctype.setText("Doc Type :" +doctypeS);
-            optionalData1.setText("Option 2 : " +optionalData1S);
-            optionalData2.setText("Option 1 : " +optionalData2S);
+            optionalData1.setText("Option 1 : " +optionalData1S);
+            optionalData2.setText("Option 2 : " +optionalData2S);
             errorCodeShow.setText("Error Code : " + errorCodeShowS);
         }
     }

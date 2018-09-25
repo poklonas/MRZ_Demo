@@ -673,9 +673,9 @@ public class MainActivity extends Activity {
 		intent.putExtra("sex", checkTextOnlySex(lines2.substring(20, 21)));
 		intent.putExtra("expiry", expire);
 		intent.putExtra("passportNo", passportID.replace("<", ""));
-
 		String errorCode = "";
-
+		intent.putExtra("personalNo", checkTextOnlyInt(lines2.substring(28, 42)));
+        intent.putExtra("optionalData2", lines2.substring(28, 42));
 		int	checkBD = sumCheckDigitForAll(birthDate);
 		int	checkEXP = sumCheckDigitForAll(expire);
 		int	checkPPID = sumCheckDigitForAll(passportID);
@@ -727,6 +727,7 @@ public class MainActivity extends Activity {
 		intent.putExtra("doctype", doctype);
 		intent.putExtra("errorCodeShow", errorCodeShow);
 		intent.putExtra("line1", lines1);
+		lines2 = lines2.substring(0, 20) + checkTextOnlySex(lines2.substring(20, 21)) + lines2.substring(21, 44);
 		intent.putExtra("line2", lines2);
 		intent.putExtra("error", errorCode);
 		startActivity(intent);
@@ -771,7 +772,6 @@ public class MainActivity extends Activity {
 		intent.putExtra("sex", checkTextOnlySex(lines2.substring(20,21)));
 		intent.putExtra("expiry", expire);
 		intent.putExtra("passportNo", passportID.replace("<", ""));
-
 		String errorCode = "";
 
 		int	checkBD = sumCheckDigitForAll(birthDate);
@@ -809,6 +809,7 @@ public class MainActivity extends Activity {
 			errorCode += "0";
 			intent.putExtra("errorStatus", "0");
 		}
+		lines2 = lines2.substring(0, 20) + checkTextOnlySex(lines2.substring(20, 21)) + lines2.substring(21, 36);
 		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 		Date date = new Date();
 		intent.putExtra("dateReceived", dateFormat.format(date));
@@ -861,7 +862,6 @@ public class MainActivity extends Activity {
 		intent.putExtra("sex", checkTextOnlySex(lines2.substring(7,8)));
 		intent.putExtra("expiry", expire);
 		intent.putExtra("passportNo", passportID.replace("<", ""));
-
 		String errorCode = "";
 		int checkBD = sumCheckDigitForAll(birthDate);
 		int checkEXP = sumCheckDigitForAll(expire);
@@ -898,7 +898,7 @@ public class MainActivity extends Activity {
             errorCode += "0";
 			intent.putExtra("errorStatus", "0");
         }
-
+		lines2 = lines2.substring(0, 7) + checkTextOnlySex(lines2.substring(7, 8)) + lines2.substring(8, 30);
 		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 		Date date = new Date();
 		intent.putExtra("dateReceived", dateFormat.format(date));
